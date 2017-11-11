@@ -1,0 +1,29 @@
+﻿@model Cineplex.Models.Cinema
+
+<div id="EditCinema">
+    <div class="dropdown">
+        <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Edit Cinema
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" style="margin-top:0">
+            <li>
+                <form asp-action="Edit" method="post" asp-route-id="@Model.Id" enctype="multipart/form-data" class="clearfix">
+                    <div class="col-xs-12">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id"/>
+                        <input type="hidden" asp-for="Location" value="@Model.Location"/>
+                        <input type="hidden" asp-for="Seats"/>
+                        Location<br />
+                        <i>Location of this cinema (@Model.Location) cannot be modified</i><br />
+                        Details<br />
+                        <textarea asp-for="Details" cols="30" rows="6" required></textarea><br />
+                        Image<br />
+                        <input type="file" accept="image/*" name="files" multiple/><br />
+                        <input type="submit" value="Update"/>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

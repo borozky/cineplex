@@ -1,0 +1,74 @@
+@model IEnumerable<Cineplex.Models.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h2 class="entry-title">Events</h2>
+        </div>
+    </div>
+}
+
+<div class="EventsIndexArea">
+    <div class="row">
+        <div class="col-xs-12">
+            <p>Every month we organize an important event for our staff and business partners. </p>
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci 
+            tation ullamcorper suscipit lobortis nisl ut aliquip 
+            ex ea commodo consequat. Duis autem vel eum iriure dolor 
+            in hendrerit in vulputate velit esse molestie consequat, 
+            vel illum dolore eu feugiat nulla facilisis at vero eros 
+            et accumsan et iusto odio dignissim qui blandit praesent 
+            luptatum zzril delenit augue duis dolore te feugait nulla 
+            facilisi.</p>
+        </div>
+    </div>
+
+    <!-------- LIST OF EVENTS BELOW ------->
+    
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>Upcoming Events</h4>
+        </div>
+
+        @if (Model != null && Model.Any())
+        {
+        <div class="col-xs-12">
+
+            @foreach (var item in Model)
+            {
+            <div class="media">
+                <div class="media-left media-top">
+                    <a href="#">
+                        @if (item.Images != null && item.Images.Any())
+                        {
+                            <img class="media-object" src="@Url.Content(item.Images.ElementAt(0).FileName)" alt="#" width="120" />
+                        }
+                        else
+                        {
+                            <img class="event-thumbnail" src="@Url.Content("~/images/no-image-available.jpg")" alt="#" width="120" />
+                        }
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        <a asp-action="Details" asp-route-id="@item.Id">@item.Title</a>
+                    </h4>
+                </div>
+            </div>
+            <p></p>
+            }
+
+        </div><!-- end .col-xs-12 -->
+        } else
+        {
+            <p>
+                There are currently no upcoming events. Please come back later
+            </p>
+        }
+    </div>
+</div>
+

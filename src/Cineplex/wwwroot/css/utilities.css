@@ -1,0 +1,41 @@
+﻿/* 
+==========================================
+CLEARFIX
+from https://css-tricks.com/snippets/css/clear-fix/
+==========================================*/
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+
+
+/*
+==========================================
+STICKY FOOTER using flexbox
+from https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+========================================*/
+.site-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+}
+
+
+/* 
+==========================================
+UTILITY CLASSES
+==========================================*/
+.shadow-bordered {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+}

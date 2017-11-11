@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Cineplex.Models.Show>
+
+@if (Model.Any())
+{
+
+    <div id="FutureShows">
+        <div class="shows">
+            @foreach (var show in Model)
+            {
+                <div class="slide">
+                    @Html.Partial("../Movies/_MovieItem.cshtml", show.Movie)
+                </div>
+            }
+        </div>
+    </div>
+} else {
+    <h2>There are shows that will be released in the future</h2>
+}

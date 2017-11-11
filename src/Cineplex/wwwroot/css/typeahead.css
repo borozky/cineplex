@@ -1,0 +1,49 @@
+﻿/* 
+==========================================
+SEARCH RESULT AUTOCOMPLETE
+==========================================*/
+.search-result {
+    display: block;
+    padding-left: 60px;
+    position: relative;
+    height: 50px;
+    font-size: 12px;
+}
+.search-result .result-title {
+    display: inline-block;
+    width: 100%;
+    z-index: 9999;
+}
+.search-result .result-description {
+    display: inline-block;
+    width: 100%;
+}
+.search-result .result-icon {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 60px;
+}
+
+/* 
+==========================================
+SEARCH RESULT AUTOCOMPLETE
+==========================================*/
+.tt-menu {
+    background-color: #fff;
+}
+.tt-dataset {
+    background-color: #fff;
+}
+.tt-suggestion {
+    background-color: #fff;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tt-suggestion:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}

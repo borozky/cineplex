@@ -1,0 +1,184 @@
+﻿#MovieDetailsArea {
+}
+
+#MovieDetailsArea .slider, #MovieDetailsArea .slides {
+    max-width: 360px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#MovieDetailsArea .slide {
+}
+
+#MovieDetailsArea .movie-information {
+}
+
+#MovieDetailsArea .movie-information ul {
+    padding: 0;
+    margin: 20px 0;
+    list-style-type: none;
+    font-size: 13px;
+}
+
+#MovieDetailsArea .movie-additional-details {
+    font-size: 14px;
+}
+
+#MovieDetailsArea .movie-description {
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+=========================================
+    MOVIE SESSION TIMES
+=========================================*/
+#MovieDetailsArea .movie-session-times {
+}
+
+#MovieDetailsArea .movie-session-times table form {
+    max-width: 320px;
+}
+
+#MovieDetailsArea .movie-session-times .movie-ticket-types {
+    display: inline-block;
+    max-width: 100px;
+    font-size: 12px;
+}
+
+#MovieDetailsArea .movie-session-times .movie-ticket-types input {
+    font-size: 12px;
+    height: 30px;
+}
+
+#MovieDetailsArea .movie-session-times .session-time {
+    font-size: 13px;
+    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+=========================================
+    MOVIE ITEMS
+=========================================*/
+.movie-item {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    min-height: 160px;
+}
+
+.movie-item h4 {
+    font-size: 15px;
+}
+
+.movie-item .image-parent {
+    display: inline-block;
+    float: left;
+    margin-right: 15px;
+}
+
+.movie-item .movie-item-metadata {
+    font-size: 12px;
+}
+
+.movie-item .movie-item-metadata span {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.movie-item .movie-item-metadata .btn {
+    font-size: 11px;
+    margin-bottom: 3px;
+}
+
+/*
+=========================================
+FOR CREATING AND UPDATING SHOWS
+=========================================*/
+#ManageShowsArea {
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#CreateShow , #EditShow {
+    display: inline-block;
+}
+
+#ManageShowsArea form {
+    font-size: 11px;
+}
+
+#ManageShowsArea .dropdown {
+}
+
+#ManageShowsArea .dropdown {
+    display: inline-block;
+    width: auto;
+}
+
+#ManageShowsArea select {
+    width: 79px;
+}
+
+#ManageShowsArea input[type=text] {
+    width: 120px;
+    height: 20px;
+}
+
+#ManageShowsArea .dropdown-menu .col-xs-12 {
+    width: 360px;
+}
+
+#EditShow ul.dropdown-menu {
+    padding-bottom: 10px !important;
+    padding-top: 10px !important;
+}
+
+#EditShow table {
+    padding-left: 15px;
+    width: 100%;
+}
+
+#EditShow table th {
+    text-align: center;
+}
+
+#EditMovie {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#EditMovie .dropdown-menu {
+}
+
+#EditMovie form {
+    font-size: 11px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#EditMovie form input[type=text], #EditMovie form textarea {
+    min-width: 240px;
+}
+
+/*
+=========================================
+ADDING MOVIES
+=========================================*/
+#AddMovie {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#AddMovie table {
+    font-size: 11px;
+}
+
+#AddMovie table td {
+    padding: 2px 7px;
+}
+
+#AddMovie table tr td:first-child {
+    text-align: right;
+    vertical-align: top;
+}

@@ -1,0 +1,38 @@
+﻿#CartIndexArea {}
+#CartIndexArea .media-body h4{
+    padding-left: 15px;
+}
+
+#CartIndexArea .cart-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+#CartIndexArea .cart-item .movie-ticket-types {
+    display: inline-block;
+}
+
+#CartIndexArea .cart-item .movie-ticket-types input {
+    max-width: 100px;
+    height: 28px;
+    margin-right: 10px;
+    padding: 0px 10px;
+}
+
+
+.RemoveBooking {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.RemoveBooking .btn {
+    margin: 0;
+    padding: 0px 10px;
+    font-size: 12px;
+    color: #e6e6e6;
+    background-color: #651717;
+    border-color: #2b1818;
+    margin-left: 15px;
+}

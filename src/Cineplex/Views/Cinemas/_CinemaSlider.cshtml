@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Cineplex.Models.Cinema>
+
+@if (Model.Any())
+{
+    <div class="slider">
+        <div class="slides">
+        @foreach (var cinema in Model)
+        {
+            if (cinema.Images != null)
+            {
+                foreach (Image m in cinema.Images)
+                {
+                    <div class="slide">
+                        <div class="slide-image-parent">
+                            <img src="@Url.Content(m.FileName)" alt="@cinema.Location"/>
+                        </div>
+                        <div class="slide-description">
+                            <b>@cinema.Location</b>
+                        </div>
+                    </div>
+
+                }
+
+            }
+        }
+        </div>
+    </div>
+
+}

@@ -1,0 +1,94 @@
+﻿@model Cineplex.Models.MovieViewModels.MovieDetailsViewModel
+
+@{
+    var movie = Model.Movie;
+    ViewBag.CinemaIds = new SelectList(Model.Cinemas, "Id", "Location");
+}
+<li id="ManageShowsArea">
+
+    <div id="CreateShow">
+        <div class="dropdown">
+            <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Create Show
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="margin-top:0">
+                <li>
+                    @{ 
+                    }
+                    <form asp-action="Create" asp-controller="Shows" method="post" id="CreateShow">
+                        <div class="col-xs-12">
+                            <input type="hidden" name="Show.MovieId" value="@Model.Movie.Id" />
+                            <input type="hidden" name="returnUrl" value="/Movies/Details/@Model.Movie.Id" />
+                            <h5>Create show</h5>
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group">
+                                Cinema<br />
+                                <select name="Show.CinemaId" asp-items="ViewBag.CinemaIds" required></select>
+                            </div>
+                            <div class="form-group">
+                                Session Time<br />
+                                <input name="Show.SessionTime" class="datetime-picker" required/>
+                            </div>
+                            <input type="submit" value="Create" />
+                            <br /><br />
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="EditShow">
+        @if (Model.Shows != null)
+        {
+            <div class="dropdown">
+                <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Edit Shows
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="margin-top:0">
+                    <li>
+                        <table>
+                            <tr>
+                                <th>Location</th>
+                                <th>Session Time</th>
+                                <th>Options</th>
+                            </tr>
+                            @if (Model.Shows != null)
+                            {
+                                @foreach (Show s in Model.Shows)
+                                {
+                                    ViewBag.CinemaIds = new SelectList(Model.Cinemas, "Id", "Location", s.CinemaId);
+                                    <tr>
+                                        <td colspan="3">
+                                            <form asp-action="Edit" asp-controller="Shows" method="post">
+                                                <div class="col-xs-12">
+                                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                                    <input type="hidden" name="Id" value="@s.Id" />
+                                                    <input type="hidden" name="Show.Id" value="@s.Id" />
+                                                    <input type="hidden" name="Show.MovieId" value="@s.Movie.Id" />
+                                                    <input type="hidden" name="returnUrl" value="/Movies/Details/@Model.Movie.Id" />
+                                                    <select name="Show.CinemaId" asp-items="ViewBag.CinemaIds" required></select>
+                                                    <input type="text" name="Show.SessionTime" class="datetime-picker" value="@s.SessionTime.ToString()" required/>
+                                                    <input type="submit" value="Update" />
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+
+                            }
+                        </table>
+
+                    </li>
+                </ul>
+            </div>
+        }
+        else
+        {
+            <div class="col-xs-12">There are no shows available</div>
+        }
+    </div>
+
+</li>

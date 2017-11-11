@@ -1,0 +1,85 @@
+﻿
+/* 
+==========================================
+FIXED SIDEBAR RESPONSIVE CONTENT
+I MADE THIS CODE LONG TIME AGO
+==========================================*/
+@media screen and (min-width: 768px) {
+  .clearfix.calc .fixed-sidebar {
+    width: 250px;
+  }
+  .clearfix.calc .fixed-sidebar + .responsive-content {
+    width: calc(100% - 250px);
+    float: left;
+  }
+  .clearfix.calc.sidebar-left .fixed-sidebar {
+    float: left;
+  }
+  .clearfix.calc.sidebar-right .fixed-sidebar {
+    float: right;
+  }
+  .clearfix.calc .responsive-content {
+    width: calc(100% - 250px);
+  }
+  .clearfix.calc .responsive-content + .fixed-sidebar {
+    width: 250px;
+    float: left;
+  }
+  .clearfix.calc.sidebar-left .responsive-content {
+    float: right;
+  }
+  .clearfix.calc.sidebar-right .responsive-content {
+    float: left;
+  }
+
+  .clearfix.margin.sidebar-left .responsive-content {
+    width: 100%;
+    float: right;
+  }
+  .clearfix.margin.sidebar-left .responsive-content .inner {
+    margin-left: 250px;
+  }
+  .clearfix.margin.sidebar-left .responsive-content + .fixed-sidebar {
+    width: 250px;
+    float: left;
+    margin-right: -250px;
+  }
+  .clearfix.margin.sidebar-left .fixed-sidebar {
+    width: 250px;
+    float: left;
+    margin-right: -250px;
+    position: relative;
+  }
+  .clearfix.margin.sidebar-left .fixed-sidebar + .responsive-content {
+    width: 100%;
+    float: right;
+  }
+  .clearfix.margin.sidebar-left .fixed-sidebar + .responsive-content .inner {
+    margin-left: 250px;
+  }
+  .clearfix.margin.sidebar-right .responsive-content {
+    width: 100%;
+    float: left;
+  }
+  .clearfix.margin.sidebar-right .responsive-content .inner {
+    margin-right: 250px;
+  }
+  .clearfix.margin.sidebar-right .responsive-content + .fixed-sidebar {
+    width: 250px;
+    float: right;
+    margin-left: -250px;
+  }
+  .clearfix.margin.sidebar-right .fixed-sidebar {
+    width: 250px;
+    float: right;
+    margin-left: -250px;
+    position: relative;
+  }
+  .clearfix.margin.sidebar-right .fixed-sidebar + .responsive-content {
+    width: 100%;
+    float: right;
+  }
+  .clearfix.margin.sidebar-right .fixed-sidebar + .responsive-content .inner {
+    margin-right: 250px;
+  }
+}

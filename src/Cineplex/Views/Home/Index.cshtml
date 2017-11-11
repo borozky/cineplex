@@ -1,0 +1,32 @@
+﻿@model Cineplex.Models.HomeViewModels.HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="HomeIndexArea">
+    <div id="HomeIndexSlider">
+     @Html.Partial("~/Views/Shared/_SiteBanner.cshtml")
+    </div>
+
+    <div class="clearfix calc sidebar-right">
+        <div class="responsive-content">
+            <div class="inner">
+                <div class="WelcomeMessage">
+                    <h4>Welcome to ABC Cineplex Website</h4>
+                    <p>Enjoy the comfort provided by our 5-star luxury cinema theaters 
+                    in five locations in Melbourne. You can book a ticket, pick your seat and watch latest shows</p>
+                </div>
+                <div id="CinemaTheaterShowcase">
+                    @{ await Html.RenderPartialAsync("_CinemaTheaterShowcase", Model.Cinemas); }
+                </div>
+            </div><!-- end .inner -->
+        </div><!-- end .responsive-content -->
+        <div class="fixed-sidebar">
+            <div id="MovieSidebarSearch">
+                @{ await Html.RenderPartialAsync("_MovieSidebarSearch", Model.Cinemas); }
+            </div>
+        </div>
+    </div>
+
+</div>

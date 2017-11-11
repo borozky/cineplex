@@ -1,0 +1,191 @@
+﻿@model Cineplex.Models.CheckoutViewModel.CheckoutIndexViewModel
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@{
+    ViewData["Title"] = "Checkout";
+    var viewModel = Model;
+    var cart = viewModel.Cart;
+    var payment = Model.Payment;
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h2 class="entry-title">Checkout</h2>
+            @if (SignInManager.IsSignedIn(User))
+            {
+            <h4 class="entry-subtitle">Currently logged-in as @UserManager.GetUserName(User)</h4>
+            }
+        </div>
+    </div>
+}
+
+
+
+
+<div id="CheckoutIndexArea">
+
+@if (cart.Bookings == null || !cart.Bookings.Any())
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>You cannot proceed to checkout because there are no items in your cart</h4>
+        </div>
+    </div>
+}
+else
+{
+    var bookingsByCinema = from booking in Model.Cart.Bookings
+                           group booking by booking.Show.CinemaId into grouped
+                           select new { CinemaId = grouped.Key, Bookings = grouped.ToList() };
+
+    var bookingsByMovie = from booking in Model.Cart.Bookings
+                          group booking by booking.Show.Movie into grouped
+                          select new { Movie = grouped.Key, Bookings = grouped.ToList() };
+
+
+    ViewData["Cinemas"] = Model.Cinemas.ToArray();
+
+    <div class="row clearfix">
+        <div class="col-xs-12 col-sm-6">
+
+            @{ Html.RenderPartial("_CreditCardForm", payment); }
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <h4>Cart</h4>
+            <table id="CartItems">
+                <tr>
+                    <th>#</th>
+                    <th>Movies</th>
+                </tr>
+                @{ var i = 0; }
+                @foreach (var item in bookingsByMovie)
+                {
+                    <tr>
+                        <td>@(i+1)</td>
+                        <td class="checkout-item-details">
+                            <div class="booking-details">
+                                <h4>@item.Movie.Title</h4>
+                                @foreach (Booking booking in @item.Bookings)
+                                {
+                                    <p class="clearfix">
+                                        <span class="show-info">Show: <b>@booking.Show.SessionTime.ToLongDateString() @booking.Show.SessionTime.ToShortTimeString()</b></span><br />
+                                        <span class="cinema-info">Location <b>@booking.Show.Cinema.Location Movie Plaza Theater</b></span><br />
+                                    </p>
+                                    <p>
+                                    @foreach (Ticket ticket in booking.Tickets)
+                                    {
+                                        if (ticket.Quantity == 0)
+                                        {
+                                            continue;
+                                        }
+                                        <span class="ticket-quantities">@ticket.PricingType.Name &times; @ticket.Quantity = @(ticket.PricingType.Value * ticket.Quantity)</span>
+                                    }
+                                        <span class="booking-total"><b>Total: </b>@string.Format("{0:C2}", @booking.CalculateTotal())</span>
+                                    </p>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                    i++;
+                }
+                <tr>
+                    <td colspan="2" class="text-right">
+                        <div style="display:inline-block;">
+                            Grant Total: <b>@string.Format("{0:C2}", cart.CalculateTotal())</b>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+}
+</div>
+
+
+@section Scripts {
+    @{//await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.js"></script>
+    <script>
+        $(function () {
+
+            function displayErrors(errors) {
+                var $errdisplay = $(".validation-summary-valid");
+                $errdisplay.html("<ul></ul>");
+                errors.forEach(function (error) {
+                    $errdisplay.find("ul").append("<li>" + error + "</li>");
+                });
+            }
+
+            $("#CreditCartForm").on("submit", function (e) {
+
+                var $cardNumber = $("input[name='CreditCardNumber']");
+                var $cardHolder = $("input[name='CardHolder']");
+                var $expiryYear = $("input[name='ExpiryYear']");
+                var $expiryMonth = $("input[name='ExpiryMonth']");
+                var $cvc = $("input[name='CVC']");
+
+                $cardNumber[0].style = "";
+                $cardHolder[0].style = "";
+                $expiryYear[0].style = "";
+                $cvc[0].style = "";
+
+                var cardNumber = $cardNumber.val();
+                var cardHolder = $cardHolder.val();
+                var expiryYear = $expiryYear.val();
+                var expiryMonth = $expiryMonth.val();
+                var cvc = $cvc.val();
+
+                console.log(expiryYear);
+                console.log(expiryMonth);
+
+                var validCardNum = $.payment.validateCardNumber(cardNumber);
+                var validCardHolder = cardHolder.trim().length > 0;
+                var validCVC = $.payment.validateCardCVC(cvc);
+                var validExpiry = $.payment.validateCardExpiry(expiryMonth, expiryYear);
+
+
+
+                var errors = [];
+
+                if (validCardNum == false) {
+                    errors.push("Invalid card number");
+                    $cardNumber[0].style.border = "1px solid red";
+                }
+
+                if (validCardHolder == false) {
+                    errors.push("Invalid card holder");
+                    $cardHolder[0].style.border = "1px solid red";
+                }
+
+                if (validCVC == false) {
+                    errors.push("Invalid CVC");
+                    $cvc[0].style.border = "1px solid red";
+                }
+
+                if (validExpiry == false) {
+                    errors.push("Invalid card expiry");
+                    $expiryYear[0].style.border = "1px solid red";
+                    $expiryMonth[0].style.border = "1px solid red";
+                }
+
+                if(errors.length > 0){
+                    displayErrors(errors);
+                    return false;
+                }
+
+                return true;
+
+            });
+            
+
+        }(jQuery));
+    </script>
+}

@@ -1,0 +1,45 @@
+@model Cineplex.Models.Event
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h3 class="entry-title">@Model.Title</h3>
+            @if (User.IsInRole("admin"))
+            {
+                Html.RenderPartial("_EditEvent", Model);
+            }
+        </div>
+    </div>
+}
+
+<div id="EventDetailsArea">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7">
+            <div class="event">
+                <div class="event-details">@Model.Details</div>
+                <div class="event-gallery">
+                    @if (Model.Images != null && Model.Images.Any())
+                    {
+                        <div class="col-xs-12">
+                            <h4>Gallery</h4>
+                            @foreach (var image in Model.Images)
+                    {
+                                <div class="image-parent">
+                                    <img src="@Url.Content("/" + image.FileName)" alt="@Model.Title" width="200" />
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5">
+            <h4>Enquire</h4>
+            @{ Html.RenderPartial("_EnquiryForm", new Enquiry { EventId = Model.Id, To = "s3485376@student.rmit.edu.au" }); }
+        </div>
+    </div>
+</div>

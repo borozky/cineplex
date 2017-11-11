@@ -1,0 +1,85 @@
+﻿/* 
+==========================================
+TOPNAV
+==========================================*/
+.topnav {
+    background-color: #22303e;
+    color: #758ba0;
+    font-size: 13px;
+}
+.topnav ul {
+    margin: 0;
+    padding: 9px 0 6px 0;
+    display: inline-block;
+}
+.topnav ul li {
+    display: inline-block;
+}
+.topnav ul li a {
+    color: #758ba0;
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.topnav ul li a:hover {
+    color: #cdd0d2;
+    text-decoration: none;
+}
+@media screen and (max-width: 360px){
+    .topnav-left {
+        display: none !important;
+    }
+    .topnav-right {
+        width: 100%;
+    }
+}
+
+.navbar-form {
+    position: relative;
+    padding-right: 60px;
+}
+
+.navbar-form button[type='submit'],
+.navbar-form input[type='submit']{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+@media screen and (min-width: 769px){
+	.navbar-form {
+		padding-right: 15px;
+	}
+
+	.navbar-form button[type='submit'],
+	.navbar-form input[type='submit']{
+		position: static;
+	}
+
+}
+
+#CartButton {
+  color: #fff;
+  margin-right: 20px;
+  background-color: #4e714e;
+  border: none;
+  vertical-align: top;
+}
+
+#SignUp_Btn {
+	background-color: #4c6073;
+	padding: 1px 10px;
+	color: #e2e2e2;
+}
+#SignUp_Btn:hover {
+    background: #677f96;
+}
+
+#Login_Link {
+	text-decoration: underline;
+	color: #91a4b7;
+}
+ #Login_Link:hover{
+	text-decoration: none;
+	color: #ddd;
+ }

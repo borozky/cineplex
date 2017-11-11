@@ -1,0 +1,149 @@
+@model Cineplex.Models.MovieViewModels.MovieDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    ViewBag.Ratings = Model.Ratings;
+    var movie = Model.Movie;
+
+    var rating = movie.Rating != null ? movie.Rating.Abbreviation : "";
+
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h3 class="entry-title">Movie Details</h3>
+        </div>
+    </div>
+}
+
+<div id="MovieDetailsArea">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            @if (movie.Images != null)
+            {
+                <div class="slider">
+                    <div class="slides">
+                        @foreach (Image image in movie.Images)
+                        {
+                            <div class="slide">
+                                <div class="image-parent">
+                                    <img src="/@Url.Content($"{image.FileName}")" alt="Image: @movie.Title" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="movie-information">
+                <h3>@movie.Title</h3>
+                @if (User.IsInRole("admin"))
+                {
+                    Html.RenderPartial("_EditMovie", Model.Movie);
+                }
+                <div class="movie-additional-details">
+                    <ul>
+                        <li>Duration: @movie.Duration minutes</li>
+                        <li>Rating: <span class="rating-@rating"></span></li>
+                        @if (User.IsInRole("admin"))
+                        {
+                            Html.RenderPartial("_ManageShows", Model);
+                        }
+                    </ul>
+                </div>
+                <div class="movie-description">
+                    @movie.Description
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            <div class="movie-session-times">
+                <h3>Session Times</h3>
+                @if (Model.Cart.HasReachedBookingLimit())
+                {
+                    <div class="alert alert-warning">You have reached the booking limit of 5 tickets. You cannot add more tickets</div>
+                }
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width: 120px">Session times</th>
+                                <th>Tickets</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Shows != null && Model.Shows.Any())
+                            {
+                                @foreach (var show in Model.Shows)
+                                {
+                                    <tr>
+                                        <td class="session-time">@show.SessionTime.ToLongDateString() <br />
+                                        @show.SessionTime.ToShortTimeString() at @show.Cinema.Location</td>
+                                        <td>
+
+                                            <form asp-controller="Cart" asp-action="AddBookingToCart" method="POST">
+                                                <input type="hidden" name="Booking.ShowId" value="@show.Id" />
+                                                <input type="hidden" name="Booking.Show.MovieId" value="@show.MovieId" />
+                                                <input type="hidden" name="Booking.Show.CinemaId" value="@show.CinemaId" />
+                                                <input type="hidden" name="Booking.Show.SessionTime" value="@show.SessionTime" />
+                                                <input type="hidden" name="ShowId" value="@show.Id" />
+                                                <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+
+                                                @{
+                                                    var i = 0;
+                                                }
+                                                @foreach (PricingType p in Model.PricingTypes)
+                                                {
+                                                    var value = 0;
+                                                    if (show.Bookings != null)
+                                                    {
+                                                        var bookingWithTickets = show.Bookings.FirstOrDefault(b => b.Tickets != null && b.Tickets.Any());
+                                                        var tickets = bookingWithTickets.Tickets.FirstOrDefault(t => t.PricingTypeId == p.Id);
+                                                        if (tickets != null)
+                                                        {
+                                                            value = tickets.Quantity;
+                                                        }
+                                                    }
+                                                    <p class="movie-ticket-types">
+                                                        <input type="hidden" name="Booking.Tickets[@i].PricingTypeId" value="@p.Id" />
+                                                        <label>@p.Name</label><br />
+                                                        <input class="input-xs form-control" type="number" name="Booking.Tickets[@i].Quantity" value="@value" min="0" max="5" step="1" pattern="\d+"/>
+                                                    </p>
+
+                                                    { 
+                                                        i++;
+                                                    }
+                                                }
+                                                <input type="submit" name="Booking" class="btn btn-sm btn-success" value="Book"/>
+                                            </form>
+                                        
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div><!-- end .table-responsive-->
+            </div><!-- end .movie-session-times -->
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+        $(function () {
+
+
+
+
+
+
+        });
+    </script>
+}

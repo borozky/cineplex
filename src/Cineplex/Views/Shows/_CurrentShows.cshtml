@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Cineplex.Models.Show>
+
+@if (Model.Any())
+{
+
+<div id="CurrentlyShowingMovies">
+    <div class="slides">
+        @foreach (var show in Model)
+        {
+            <div class="slide">
+                @Html.Partial("../Movies/_MovieItem.cshtml", show.Movie)
+            </div>
+        }
+    </div>
+</div>
+}

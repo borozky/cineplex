@@ -1,0 +1,50 @@
+﻿@model Cineplex.Models.Payment
+
+@{ 
+    ViewBag.Payment = Model != null ? new Payment() : ViewBag.Payment;
+}
+
+<form asp-action="ProcessPayment" method="post" id="CreditCartForm">
+    <h4>Please enter credit card details to proceed with payment</h4>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <table>
+        <tr>
+            <td><label asp-for="CardHolder"></label></td>
+            <td>
+                <input asp-for="CardHolder" /><br />
+                <span asp-validation-for="CardHolder" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="CreditCardNumber"></label></td>
+            <td><input asp-for="CreditCardNumber" /><br />
+                <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="ExpiryYear"></label></td>
+            <td><input type="number" name="ExpiryYear"/><br />
+                <span asp-validation-for="ExpiryYear" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="ExpiryMonth"></label></td>
+            <td><input type="number" name="ExpiryMonth"/><br />
+                <span asp-validation-for="ExpiryMonth" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="CVC"></label></td>
+            <td><input asp-for="CVC" type="number" /><br />
+                <span asp-validation-for="CVC" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p class="text-left">
+                <input type="submit" value="Pay now" class="btn btn-lg btn-success" />
+                </p>
+            </td>
+        </tr>
+    </table>
+</form>

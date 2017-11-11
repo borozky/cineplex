@@ -1,0 +1,50 @@
+@model Cineplex.Models.CartViewModels.CartEditSeatsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form asp-action="AddBookingToCart" asp-controller="Cart">
+    <input type="hidden" name="Booking.ShowId" value="@Model.Booking.ShowId" />
+    <h3>Please select select your seats</h3>
+
+    <div class="seats">
+        @for (int i = 0; i < Model.Show.Cinema.Seats; i++)
+        {
+
+            var reservedString = "";
+            var value = i + 1;
+
+            if (Model.Reserved.Contains(i + 1))
+            {
+                reservedString = " disabled =\"disabled\"";
+                value = 0;
+            }
+
+            var checkedString = " ";
+            if (Model.SeatsUsed.Contains(i + 1))
+            {
+                checkedString = " checked=\"checked\"";
+            }
+
+            <div class="checkbox">
+                <input type="hidden" name="Booking.Seats.Index" value="@value"/>
+                <input type="checkbox" name="Booking.Seats[@value]" value="@value" @checkedString @reservedString>
+            </div>
+        }
+    </div>
+    <input type="submit" class="btn btn-lg btn-success" value="Update" />
+</form>
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

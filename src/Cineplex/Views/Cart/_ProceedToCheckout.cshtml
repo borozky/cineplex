@@ -1,0 +1,24 @@
+﻿@model Cineplex.Models.Cart
+
+@{var cart = Model; }
+
+@if (cart.Bookings.Any())
+{
+    <div class="proceed-to-cart-container">
+        <p>
+            @{ 
+                var disabled = "";
+                if (cart.HasRemainingSeatsLeft())
+                {
+                    disabled = " disabled";
+                }
+            }
+
+            <a class="btn btn-lg btn-success@(disabled)" asp-action="Index" asp-controller="Checkout">Proceed to Checkout</a>
+        </p>
+        @if (cart.HasRemainingSeatsLeft())
+        {
+        <p class="alert alert-danger">You have remaining seats. Please select your seats</p>
+        }
+    </div>
+}

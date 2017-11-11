@@ -1,0 +1,160 @@
+﻿#OrderDetailsArea {
+    margin-bottom: 100px;
+}
+
+#OrderDetailsArea .order-summary {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    min-width: 700px;
+    max-width: 800px;
+    padding: 10px;
+}
+
+#OrderDetailsArea .order-summary .order-heading {
+}
+
+#OrderDetailsArea .order-summary .order-heading h4 {
+}
+
+#OrderDetailsArea .order-summary .company-details {
+    line-height: 1.2;
+    display: inline-block;
+    float: left;
+}
+
+#OrderDetailsArea .order-summary .company-details .company-name {
+}
+
+#OrderDetailsArea .order-summary .company-details address {
+    display: inline-block;
+    width: 143px;
+    line-height: 1.2;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+#OrderDetailsArea .order-summary .order-meta {
+    display: inline-block;
+    float: right;
+}
+
+#OrderDetailsArea .order-summary .order-meta .order-date-invoicenum {
+}
+
+#OrderDetailsArea .order-summary .order-meta .order-date-invoicenum .order-date-label {
+    text-align: right;
+    padding-right: 10px;
+}
+
+#OrderDetailsArea .order-summary .order-meta .order-date-invoicenum .order-date-value {
+    font-family: monospace;
+}
+
+#OrderDetailsArea .order-summary .order-meta .order-date-invoicenum .order-date {
+}
+
+#OrderDetailsArea .order-summary .order-meta .order-date-invoicenum .order-invoicenum-label {
+    text-align: right;
+    padding-right: 10px;
+}
+
+#OrderDetailsArea .order-summary .order-meta .order-date-invoicenum .order-invoicenum-value {
+    font-family: monospace;
+}
+
+#OrderDetailsArea .order-summary .order-meta .order-date-invoicenum table {
+}
+
+#OrderDetailsArea .order-summary .order-bookings {
+}
+
+#OrderDetailsArea .order-summary .order-bookings th {
+    background: #b2cae2;
+    padding: 7px 10px;
+}
+
+#OrderDetailsArea .order-summary .order-bookings th:nth-child(2) {
+}
+
+#OrderDetailsArea .order-summary .order-bookings th:nth-child(3) {
+    width: 200px;
+}
+
+#OrderDetailsArea .order-summary .order-bookings th:nth-child(4) {
+    width: 90px;
+}
+
+#OrderDetailsArea .order-summary .order-bookings tr {
+    background-color: #f7f7f7;
+}
+
+#OrderDetailsArea .order-summary .order-bookings tr td {
+    padding: 10px;
+    font-size: 12px;
+}
+
+#OrderDetailsArea .order-summary .order-bookings th:first-child {
+    width: 80px;
+}
+
+#OrderDetailsArea .order-summary .order-bookings table {
+    width: 100%;
+}
+
+#OrderDetailsArea .order-summary .order-bookings .movie-title {
+    font-weight: 700;
+    display: block;
+}
+
+#OrderDetailsArea .order-summary .order-bookings .cinema-location {
+    font-style: italic;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#OrderDetailsArea .order-summary .order-bookings .session-time {
+}
+
+#OrderDetailsArea .order-summary .order-bookings .seat-numbers {
+    display: block;
+}
+
+#OrderDetailsArea .order-summary .order-bookings .seatnum {
+    display: inline-block;
+    background-color: #d8d8d8;
+    padding: 2px 5px;
+    margin-top: 6px;
+}
+
+#OrderDetailsArea .order-summary .order-bookings .ticket-quantities {
+}
+
+#OrderDetailsArea .order-summary .order-bookings .ticket-quantity {
+}
+
+#OrderDetailsArea .order-summary .order-bookings .booking-total {
+}
+
+#OrderDetailsArea .order-summary .order-bookings .additional-notes {
+}
+
+#OrderDetailsArea .order-summary .order-bookings .grand-totals {
+    text-align: right;
+}
+
+#OrderDetailsArea .order-summary .delivery-payment-information {
+    margin-top: 10px;
+}
+
+#OrderDetailsArea .order-summary .delivery-information {
+    width: 50%;
+    float: left;
+}
+
+#OrderDetailsArea .order-summary .payment-information {
+    width: 50%;
+    float: left;
+}
+
+#OrderDetailsArea .order-summary .order-bookings .grand-total {
+}

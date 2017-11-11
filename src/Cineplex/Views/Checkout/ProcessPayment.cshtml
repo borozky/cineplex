@@ -1,0 +1,22 @@
+﻿@model Cineplex.Models.CheckoutViewModel.CheckoutIndexViewModel
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{ 
+    ViewData["Title"] = "Checkout";
+}
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h2 class="entry-title">Checkout</h2>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <h4 class="entry-subtitle">Currently logged-in as @UserManager.GetUserName(User)</h4>
+            }
+        </div>
+    </div>
+}
+
+
+@{Html.RenderPartial("Index", Model);}

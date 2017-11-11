@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ABC Cineplex Corp.</title>
+
+	<!-- Roboto from Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+
+	<!-- bootstrap css v3.3.7 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
+	<!-- font-awesome v4.7.0 -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+	<!-- animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+	<!-- jQuery UI styling -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+
+	<!-- awesome bootstrap checkbox -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/0.3.7/awesome-bootstrap-checkbox.min.css" />
+
+	<!-- photoswipe v4.1.1 css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" />
+
+	<!-- swipe js 2 by lyfeyaj -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swipejs/2.2.5/style.min.css" />
+
+	<!-- style.css -->
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+		.swipe {
+			overflow: hidden;
+			visibility: hidden;
+			position: relative;
+		}
+		.swipe-wrap {
+			overflow: hidden;
+			position: relative;
+		}
+		.swipe-wrap > div {
+			float: left;
+			width: 100%;
+			position: relative;
+		}
+
+		#slider .swipe-wrap div {
+			height: 300px;
+			width: 500px;
+			background-color: #444;
+		}
+	</style>
+</head>
+<body>
+	<div class="site-wrapper">
+		<div class="site-header">
+			<div class="site-header-inner">
+				<nav class="topnav">
+					<div class="container clearfix">
+						<ul>
+							<li><a href="#">Contact Us</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Something</a></li>
+							<li><a href="#">Something</a></li>
+						</ul>
+						<ul class="pull-right">
+							<li><a href="#" id="Login_Link">Login</a> or &nbsp;<a href="#" id="SignUp_Btn" class="btn btn-sm">Sign Up</a></li>
+						</ul>
+					</div>
+				</nav>
+
+				<nav class="navbar navbar-inverse navbar-static-top">
+					<div class="container">
+
+						<div class="navbar-header">
+							<button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a href="#" class="navbar-brand">ABC Cineplex Corp</a>
+						</div><!-- end .navbar-header -->
+
+						<div id="Navbar" class="navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li><a href="#">Home</a></li>
+								<li><a href="#">Cinemas</a></li>
+								<li><a href="#">Movies</a></li>
+								<li><a href="#">Events</a></li>
+							</ul>
+							<form action="" class="navbar-form navbar-right">
+								<div class="form-group">
+									<input type="text" class="form-control input-sm" placeholder="Search">
+								</div>
+								<button class="btn btn-sm" type="submit">
+									<span class="fa fa-search"></span>
+								</button>
+							</form>
+						</div><!-- end #Navbar.navbar-collapse -->
+
+					</div>
+				</nav><!-- end nav.navbar.navbar-inverse -->
+
+			</div>
+		</div><!-- end .site-header -->
+		<div class="site-content">
+			<div class="site-content-inner">
+				<div class="site-banner">
+					<div class="container">
+						<div id="slider" class="swipe">
+							<div class="swipe-wrap">
+								<div style="background-color: #444"></div>
+								<div style="background-color: #ddd"></div>
+								<div style="background-color: #999"></div>
+							</div>
+						</div>
+					</div>
+				</div><!-- end .site-banner -->
+				
+				<div class="site-main">
+					<div class="container">
+						<div id="LoginArea">
+							<div class="row">
+								<div id="LoginArea_left" class="col-xs-12 col-sm-5">
+									<h3>Some title here</h3>
+									<p>Some description</p>
+								</div>
+								<div id="LoginArea_right" class="col-xs-12 col-sm-7">
+									<form action="">
+										<h2>Login</h2>
+										<div class="form-group">
+											<label for="#">Email</label><br>
+											<input type="text" class="input-sm form-control">
+										</div>
+										<div class="form-group">
+											<label for="#">Password</label><br>
+											<input type="password" class="input-sm form-control">
+										</div>
+										<div class="form-group">
+											<input type="checkbox" name="remember-me"> Remeber me
+										</div>
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary"> Login</button>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="RegistrationArea">
+						
+					</div>
+
+
+				</div><!-- end .site-main -->
+			</div>
+		</div><!-- end .site-content -->
+		<div class="site-footer">
+			<div class="site-footer-inner">
+				<div class="container">
+
+					site footer goes here
+
+				</div>
+			</div>
+		</div><!-- end .site-footer -->
+	</div><!-- end.site-wrapper -->
+
+
+	<!-- jQuery v3 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- jQuery UI -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+	<!-- jQuery UI Touch Punch -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- bootstrap js v3.3.7 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- modernizr -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+	<!-- photoswipe js v4.1.1 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
+
+	<!-- moment js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+	<!-- swipe js 2 by lyfeyaj -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/swipejs/2.2.5/swipe.min.js"></script>
+
+	<!-- script.js -->
+	<script src="script.js"></script>
+
+	<script>
+		var element = document.getElementById('slider'),
+		    prevBtn = document.getElementById('prev'),
+		    nextBtn = document.getElementById('next');
+
+		window.mySwipe = new Swipe(element, {
+		  startSlide: 0,
+		  auto: 3000,
+		  draggable: true,
+		  autoRestart: false,
+		  continuous: true,
+		  disableScroll: true,
+		  stopPropagation: true,
+		  callback: function(index, element) {},
+		  transitionEnd: function(index, element) {}
+		});
+	</script>
+</body>
+</html>

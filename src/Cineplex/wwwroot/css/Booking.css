@@ -1,0 +1,23 @@
+﻿#BookingsEditArea {
+    margin-bottom: 30px;
+}
+
+#BookingsEditArea .seats {
+    width: 510px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#BookingsEditArea .seats .seat {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: #ddd;
+    text-align: center;
+    margin: 10px;
+}
+
+#BookingsEditArea .seats .seat input[type=checkbox] {
+    height: 40px;
+    width: 40px;
+}

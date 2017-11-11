@@ -1,0 +1,120 @@
+﻿@model Cineplex.Models.CartViewModels.CartIndexViewModel
+
+@{ 
+    ViewData["Title"] = "Checkout";
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h3 class="entry-title">
+                Your cart
+            </h3>
+        </div>
+    </div>
+}
+
+@{ 
+    var cart = Model.Cart;
+    var movies = Model.Movies;
+    //var pricingTypes = Model.PricingTypes.ToDictionary(p => p.Id, p => p.Name);
+    var pricingTypes = Model.PricingTypes;
+}
+
+<div id="CartIndexArea">
+    <div class="row">
+        <div class="col-xs-12">
+
+            @if (movies != null && movies.Any())
+            {
+                foreach (Movie m in movies)
+                {
+                    <div class="media">
+                        <div class="media-left">
+                            @if (m.Images != null)
+                            {
+                                <a asp-action="Details" asp-controller="Movies" asp-route-id="@m.Id">
+                                    <img class="media-object" width="80" src="@Url.Content($"/{m.Images.ElementAt(0).FileName}")" alt="@m.Title"/>
+                                </a>
+                            }
+                        </div>
+                        <div class="media-body">
+                            <h4>@m.Title</h4>
+                            @if (m.Shows != null)
+                            {
+                                @foreach (Show s in m.Shows)
+                                {
+                                    if (cart.Bookings.Exists(b => b.ShowId == s.Id) == false)
+                                    {
+                                        continue;
+                                    }
+
+                                    <div class="cart-item shadow-bordered">
+                                        <form asp-action="AddBookingToCart" asp-controller="Cart" method="post" class="clearfix">
+                                            <!--<input type="hidden" name="Shows.Index" value="@s.Id"/> -->
+                                            <input type="hidden" name="Booking.ShowId" value="@s.Id"/>
+                                            <input type="hidden" name="Booking.Show.MovieId" value="@m.Id"/>
+                                            <input type="hidden" name="Booking.Show.CinemaId" value="@s.CinemaId"/>
+                                            <input type="hidden" name="Booking.Show.SessionTime" value="@s.SessionTime" />
+
+                                            <div class="col-xs-12 col-sm-9">
+                                                <p class="session-time">
+                                                    <b>Session time</b><br />@s.SessionTime.ToShortTimeString() &nbsp;
+                                                    <a asp-action="Edit" asp-controller="Bookings" asp-route-ShowId="@s.Id">Update Seating Arrangement</a>
+                                                </p>
+                                            @{
+                                                var i = 0;
+                                            }
+                                            @foreach (PricingType p in pricingTypes)
+                                            {
+                                                var value = 0;
+
+                                                if (s.Bookings != null)
+                                                {
+                                                    var bookingWithTickets = s.Bookings.FirstOrDefault(b => b.Tickets != null && b.Tickets.Any());
+                                                    var tickets = bookingWithTickets.Tickets.FirstOrDefault(t => t.PricingTypeId == p.Id);
+                                                    if (tickets != null)
+                                                    {
+                                                        value = tickets.Quantity;
+                                                    }
+                                                }
+                                                <div class="movie-ticket-types"> 
+                                                    <input type="hidden" name="Booking.Tickets[@i].PricingTypeId" value="@p.Id" />
+                                                    <label>@p.Name</label><br />
+                                                    <input type="number" name="Booking.Tickets[@i].Quantity" value="@value"/>
+                                                </div>
+
+                                                {
+                                                    i++;
+                                                }
+
+
+
+                                            }
+                                                <input type="submit" class="btn btn-sm btn-success" value="Update"/>
+                                            </div><!--end .col-xs-12 -->
+
+                                        </form>
+                                        <form asp-action="RemoveBooking" method="post" class="RemoveBooking">
+                                            <input type="hidden" name="ShowId" value="@s.Id"/>
+                                            <input type="submit" value="Remove Booking" class="btn btn-xs"/>
+                                        </form>
+                                    </div>
+                            }
+                    }
+            </div><!-- end .media-body -->
+            </div>
+                                                    }
+                                                } else
+                                                {
+                                                    Html.RenderPartial("_EmptyCart");
+                                                }
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            @{ Html.RenderPartial("_ProceedToCheckout", Model.Cart); }
+        </div>
+    </div>
+</div>

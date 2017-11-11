@@ -1,0 +1,9 @@
+﻿.entry-header {
+    background-color: #fbfbfb;
+    border-bottom: 1px solid #f3f3f3;
+    padding-top: 15px;
+    margin-bottom: 20px;
+}
+.entry-header .entry-title {
+    font-size: 30px;
+}

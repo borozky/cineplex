@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Cineplex.Models.Cinema>
+
+<div>
+    <h4>Movie Search</h4>
+    <form asp-action="Search" asp-controller="Movies" method="get">
+        <input type="hidden" name="criteria" value="title" />
+        <b>Search by title</b>
+        <div class="form-group">
+            <label>Movie title</label>
+            <input type="text" name="keyword" placeholder="Movie title here" class="form-control input-xs" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-sm btn-success" value="Search By Title" />
+        </div>
+    </form>
+    <form asp-action="Search" asp-controller="Movies" method="get">
+        <input type="hidden" name="criteria" value="cinema"/>
+        <b>Search by Cinema</b>
+        <div class="form-group">
+            <b>Cinema</b><br />
+            @foreach (var item in Model)
+            {
+                <input type="radio" name="keyword" value="Fitzroy" /> @item.Location
+                <br />
+            }
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-sm btn-success" value="Search by Cinema" />
+        </div>
+    </form>
+</div>
+

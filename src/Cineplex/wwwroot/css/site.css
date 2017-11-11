@@ -1,0 +1,50 @@
+﻿@import "utilities.css";
+@import "common.css";
+@import "bootstrap-overrides.css";
+@import "fixed-width-sidebar.css";
+
+
+@import "navigation.css";
+@import "typeahead.css";
+@import "slider.css";
+@import "footer.css";
+
+@import "login.css";
+@import "entry-sections.css";
+
+/* 1 css per controller */
+@import "Home.css";
+@import "Movie.css";
+@import "Cinema.css";
+@import "Cart.css";
+@import "Booking.css";
+@import "Checkout.css";
+@import "Order.css";
+@import "Event.css";
+
+/* 
+==========================================
+MEDIA QUERIES
+==========================================*/
+@media screen and (min-width: 480px){
+
+}
+
+@media screen and (min-width: 568px){
+
+}
+
+@media screen and (min-width: 768px){
+
+}
+
+@media screen and (min-width: 800px){
+
+}
+
+@media screen and (min-width: 960px){
+
+}
+
+
+

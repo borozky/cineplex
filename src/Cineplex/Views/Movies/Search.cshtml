@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Cineplex.Models.Movie>
+
+@{
+    ViewBag.TitleText = ViewBag.Title != null ? ViewBag.Title : "Found movies";
+    ViewData["Title"] = "Index";
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h3>@ViewBag.TitleText</h3>
+            @if (User.IsInRole("admin"))
+            {
+                <p>@{ Html.RenderPartial("_AddMovie", new Movie()); }</p>
+                    }
+        </div>
+    </div>
+}
+
+@if (Model != null)
+{
+    if (Model.Any())
+    {
+    <div class="movies row">
+        @foreach (Movie movie in Model)
+        {
+            Html.RenderPartial("_MovieItem", movie);
+        }
+    </div>
+    } else
+    {
+        <h3>There are no movies found</h3>
+    }
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

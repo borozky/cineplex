@@ -1,0 +1,44 @@
+@model Cineplex.Models.CinemaViewModels.CinemaIndexViewModel
+
+@{
+    ViewData["Title"] = "Cinemas";
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h2 class="entry-title">Cinemas</h2>
+        </div>
+    </div>
+}
+
+<div id="CinemaIndexArea">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6" style="font-size:15px">
+            <blockquote>Luxury is the best policy</blockquote>
+            <p>Nam liber tempor cum soluta nobis eleifend option 
+            congue nihil imperdiet doming id quod mazim placerat 
+            facer possim assum. Lorem ipsum dolor sit amet, 
+            consectetuer adipiscing elit, sed diam nonummy nibh 
+            euismod tincidunt ut laoreet dolore magna aliquam 
+            erat volutpat. Ut wisi enim ad minim veniam, quis 
+            nostrud exerci tation ullamcorper suscipit lobortis 
+            nisl ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div id="CinemaSlider" class="pull-right">
+                @{ await Html.RenderPartialAsync("_CinemaSlider", Model.Cinemas); }
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Movie Plaza Theaters</h3>
+    </div>
+    @{ Html.RenderPartial("_CinemaList", Model.Cinemas); }
+    
+    
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

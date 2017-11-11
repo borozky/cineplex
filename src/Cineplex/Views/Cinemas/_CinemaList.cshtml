@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Cineplex.Models.Cinema>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-xs-12 cinema-info">
+
+                <div class="media">
+                    <div class="media-left media-top">
+                        <a href="#">
+                            @if (item.Images != null && item.Images.Any())
+                            {
+                                <img class="cinema-thumbnail" src="@Url.Content(item.Images.ElementAt(0).FileName)" alt="@item.Location Movie Plaza Theater" width="120" />
+                            }
+                            else
+                            {
+                                <img class="cinema-thumbnail" src="@Url.Content("~/images/no-image-available.jpg")" alt="@item.Location Movie Plaza Theater" width="120" />
+                            }
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">@item.Location</h4>
+                            @if (User.IsInRole("admin")) {
+                                <p>@{ Html.RenderPartial("_EditCinema", item); }</p>
+                            }
+                        <p>@item.Details
+                            <br />
+                            <small class="cinema-meta-item">Number of seats: <b>@item.Seats</b></small><br />
+                        </p>
+                    </div>
+                </div><!-- end .media -->
+
+                
+            </div>
+        }
+    </div>
+}

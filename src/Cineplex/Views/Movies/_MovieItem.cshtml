@@ -1,0 +1,46 @@
+﻿@model Cineplex.Models.Movie
+
+<div class="movie-item col-xs-12 col-sm-6">
+    <div class="image-parent">
+        @if (Model.Images.Any())
+        {
+            <a asp-action="Details" asp-route-id="@Model.Id">
+                <img src="/@Model.Images.First().FileName" alt="@Model.Title" class="movie-item-image" width="100"/>
+            </a>
+        }
+    </div>
+    <div class="movie-item-metadata">
+        <h4>
+            <a asp-action="Details" asp-controller="Movies" asp-route-id="@Model.Id">
+                @Model.Title
+            </a>
+        </h4>
+        <p>
+            @if (Model.Rating != null)
+            {
+
+                <b>@Model.Rating.Abbreviation</b>
+            }
+            @{ 
+                var txtDate = string.Format("Duration: {0} minutes", Model.Duration);
+            }
+            <span>@txtDate</span>
+        </p>
+        @if (Model.Shows.Any())
+        {
+            <p>
+                @foreach (var show in Model.Shows)
+                {
+                    <a class="btn btn-xs btn-success" 
+                       title="@show.Cinema.Location, @show.SessionTime.ToString("d MMM hh:mm tt")"
+                       asp-area="" 
+                       asp-controller="Movies" 
+                       asp-action="Details" 
+                       asp-route-id="@Model.Id">
+                        @show.SessionTime.ToString("d MMM hh:mm tt") at @show.Cinema.Location
+                    </a>
+                }
+            </p>
+        }
+    </div>
+</div>

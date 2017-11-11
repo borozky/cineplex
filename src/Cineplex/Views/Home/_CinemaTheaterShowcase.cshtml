@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Cineplex.Models.Cinema>
+
+@if (Model.Any())
+{
+    @foreach (var item in Model)
+    {
+        <div class="cinema shadow-bordered">
+            <div class="cinema-image-parent">
+                <a asp-action="Movies" asp-controller="Cinemas" asp-route-id="@item.Id">
+                    @if (item.Images != null && item.Images.Any())
+                    {
+                        <img src="@Url.Content(item.Images.First().FileName)" width="300" />
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/images/sample-350x150.png")" />
+                    }
+                </a>
+            </div>
+            <div class="cinema-details">
+                <b>@item.Location</b><br />
+                <span>Number of seats: @item.Seats</span>
+            </div>
+            @if (item.Location.Equals("Lilydale"))
+            {
+                <span class="new">New</span>
+            }
+        </div>
+    }
+}

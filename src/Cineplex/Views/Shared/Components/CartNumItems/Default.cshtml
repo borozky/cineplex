@@ -1,0 +1,16 @@
+﻿@model Cineplex.Models.Cart
+
+@{ 
+    var numitems = 0;
+    if (Model != null)
+    {
+        if (Model.Bookings != null)
+        {
+            numitems = Model.Bookings.Count();
+        }
+    }
+}
+
+<a asp-action="Index" asp-controller="Cart" class="btn btn-success btn-xs" id="CartButton">
+    <i class="fa fa-shopping-cart"></i> Cart (@numitems)
+</a>

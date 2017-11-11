@@ -1,0 +1,42 @@
+﻿@model Cineplex.Models.Movie
+
+@{ 
+    var ratingItems = new List<Rating> { new Rating { Id = 0, Abbreviation = "", Description = "" } }.Union((List<Rating>) ViewBag.Ratings);
+
+    var ratings = new SelectList(ratingItems, "Id", "Abbreviation", Model.RatingId);
+}
+
+<div id="EditMovie">
+    <div class="dropdown">
+        <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Edit
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="margin-top:0">
+            <li>
+                <form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="clearfix">
+                    <div class="col-xs-12">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id"/>
+                        <input type="hidden" name="returnUrl" value="/Movies/Details/@Model.Id" />
+                        <label>Title</label><br />
+                        <input type="text" asp-for="Title" required/><br />
+                        <label>Description</label><br />
+                        <textarea asp-for="Description" required></textarea><br />
+                        <label>Duration</label><br />
+                        <input type="number" asp-for="Duration" min="0"/><br />
+                        <label>Rating</label><br />
+                        <select asp-for="RatingId" asp-items="ratings"></select><br /><br />
+                        <input type="submit" value="Update"/>
+                    </div>
+                </form>
+                <form asp-action="Remove" asp-route-id="@Model.Id" method="post" class="clearfix">
+                    <div class="col-xs-12 text-right">
+                        <input type="submit" value="Delete this movie"/><br />
+                        <i class="text-danger">Warning: You cannot undo this action</i>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

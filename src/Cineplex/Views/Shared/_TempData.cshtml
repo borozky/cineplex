@@ -1,0 +1,45 @@
+﻿@using Newtonsoft.Json;
+@using Cineplex.Models;
+
+
+@if (TempData != null && TempData.Any())
+{
+    foreach (var item in TempData)
+    {
+        var message = "";
+        if (item.Value.ToString().StartsWith("[") == false )
+        {
+            message = item.Value.ToString();
+            <div class="alert alert-@item.Key">
+                <div class="container">
+                    @message
+                </div>
+            </div>
+        }
+        else
+        {
+            try
+            {
+                var errorMessages = JsonConvert.DeserializeObject<List<ModelStateTransferValue>>(item.Value.ToString());
+                var messages = errorMessages.Where(e => e.ErrorMessages.Any());
+                var messageString = messages.Select(m => string.Join(", ", m.ErrorMessages)).ToArray();
+                var finalString = string.Join(", ", messageString);
+                <div class="alert alert-danger">
+                    <div class="container">
+                        @finalString
+                    </div>
+                </div>
+            }
+            catch (Exception)
+            {
+                <div class="alert alert-danger">
+                    <div class="container">
+                        Sorry, something went wrong while processing your request
+                    </div>
+                </div>
+            }
+        }
+
+    }
+
+}

@@ -1,0 +1,32 @@
+@model IEnumerable<Cineplex.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h3>All Movies</h3>
+            @if (User.IsInRole("admin"))
+            {
+                <p>@{ Html.RenderPartial("_AddMovie", new Movie()); }</p>
+            }
+        </div>
+    </div>
+}
+
+@if (Model != null)
+{
+    <div class="movies row">
+    @foreach (Movie movie in Model)
+    {
+        Html.RenderPartial("_MovieItem", movie);
+    }
+    </div>
+
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

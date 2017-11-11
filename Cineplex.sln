@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EEE6462A-E26B-4791-93FA-DB4593F275CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B31E303-42E0-44D1-B402-D2ED42AB99A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cineplex", "src\Cineplex\Cineplex.csproj", "{E1AE7AAF-FA59-4A9D-9F9E-1838FAB24C85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1AE7AAF-FA59-4A9D-9F9E-1838FAB24C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1AE7AAF-FA59-4A9D-9F9E-1838FAB24C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1AE7AAF-FA59-4A9D-9F9E-1838FAB24C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1AE7AAF-FA59-4A9D-9F9E-1838FAB24C85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1AE7AAF-FA59-4A9D-9F9E-1838FAB24C85} = {EEE6462A-E26B-4791-93FA-DB4593F275CF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D27A1D3-E43F-4615-957A-4EFA2763F266}
+	EndGlobalSection
+EndGlobal

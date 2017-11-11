@@ -1,0 +1,134 @@
+@model Cineplex.Models.OrderViewModels.OrderDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    var order = Model.Order;
+}
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h3 class="entry-title">Your order details</h3>
+        </div>
+    </div>
+}
+
+<div id="OrderDetailsArea">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="order-summary">
+                <div class="order-heading">
+                    <h4>INVOICE</h4>
+                </div>
+                <div class="order-header clearfix">
+                    <div class="company-details">
+                        <b class="company-name">ABC Cineplex Corporation</b><br />
+                        <b>Luxury Cinema Services</b><br />
+                        <address>
+                            59 Colllins Street, <br />
+                            Melbourne CBD 3000<br />
+                            PO Box. PO. Box 91823<br />
+                            Tel. 03 8898 8910<br />
+                            info@abcc.com.au<br />
+                            ABN: 48 150 248 927<br />
+                        </address>
+                    </div>
+                    <div class="order-meta">
+                        <div class="order-date-invoicenum">
+                            <table>
+                                <tr>
+                                    <td class="order-date-label">Date: </td>
+                                    <td class="order-date-value"><span class="order-date">@Model.DateCreated.ToShortDateString()</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="order-invoicenum-label">Order #:</td>
+                                    <td class="order-invoicenum-value">@order.Id</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-bookings">
+                    <table>
+                        <tr>
+                            <th>Show ID</th>
+                            <th>Booking Information</th>
+                            <th>Tickets</th>
+                            <th>Item Total</th>
+                        </tr>
+                        @foreach (var booking in order.Bookings)
+                        {
+                            var total = 0.0;
+                        <tr>
+                            <td>@booking.Id</td>
+                            <td>
+                                <span class="movie-title">@booking.Show.Movie.Title</span> at 
+                                <span class="cinema-location">@booking.Show.Cinema.Location Movie Plaza Theatre</span><br />
+                                <span class="session-time">@booking.Show.SessionTime.ToLongDateString() @booking.Show.SessionTime.ToShortTimeString()</span>
+                                <span class="seat-numbers">SEATS: 
+                                    @foreach (var seat in booking.Seats)
+                                    {
+                                    <span class="seatnum">@seat.SeatNumber</span>
+                                    }
+                                </span>
+                            </td>
+                            <td>
+                                <span class="ticket-quantities">
+                                    @{ 
+                                        var ticketsGroups = from ticket in booking.Tickets
+                                                            group ticket by ticket.PricingType into grouped
+                                                            select new { PricingType = grouped.Key, Tickets = grouped.ToList() };
+                                    }
+                                    @foreach (var ticketgroup in ticketsGroups)
+                                    {
+                                        <span class="ticket-quantities">
+                                            @ticketgroup.Tickets.Count()
+                                            @ticketgroup.PricingType.Name ($@ticketgroup.PricingType.Value)
+                                            = @string.Format("{0:C2}", ticketgroup.Tickets.Count() * ticketgroup.PricingType.Value)
+                                        </span><br />
+
+                                        { total += (double)(ticketgroup.Tickets.Count() * ticketgroup.PricingType.Value); }
+                                    }
+                                </span>
+                            </td>
+                            <td>
+                                <span class="booking-total">@string.Format("{0:C2}", total)</span>
+                            </td>
+                        </tr>
+                        }
+                    </table>
+                    <table class="footer-information">
+                        <tr>
+                            <td class="additional-notes">
+                               <b>Additional Notes: </b><br />
+                            </td>
+                            <td class="grand-totals">
+                                <b>Grand Total</b> <br />
+                                <span class="grant-total">@order.Total</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </table>
+                    <div class="delivery-payment-information clearfix">
+                        <div class="delivery-information">
+                            <b>Delivery Information</b><br />
+                            Your tickets will be delivered via mail.
+                        </div>
+                        <div class="payment-information">
+                            <b>Payment Information: </b><br />
+                            Credit card
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

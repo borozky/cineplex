@@ -1,0 +1,54 @@
+﻿@model Cineplex.Models.Event
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Details" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <textarea asp-for="Details" class="form-control"></textarea>
+                <span asp-validation-for="Details" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartDate" class="form-control datetime-picker" />
+                <span asp-validation-for="StartDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Images" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <p>
+                    <input type="file" name="files" multiple />
+                </p>
+                <p>
+                    @if (Model.Images != null && Model.Images.Any())
+                    {
+                        foreach (var image in Model.Images)
+                        {
+                            <div class="image-parent">
+                                <img src="@Url.Content(image.FileName)" width="100" />
+                            </div>
+                        }
+                    }
+                </p>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-lg btn-success" />
+            </div>
+        </div>
+    </div>
+</form>

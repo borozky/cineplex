@@ -1,0 +1,54 @@
+﻿/* 
+==========================================
+SWIPE JS STYLING By LYFEYAJ
+==========================================*/
+.slider {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.slides {
+  overflow: hidden;
+  position: relative;
+}
+.slides > .slide {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+.slide img {
+    display: inline-block;
+    width: 100%;
+}
+
+.site-banner.slider {
+    max-height: 350px;
+}
+
+.site-banner.slider .slide {
+    position: relative;
+    max-height: 350px;
+}
+.site-banner.slider .slide .image-parent {
+    max-height: 350px;
+}
+
+.slide .slide-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+57&0.65+5,0.65+5,0+78 */
+    background: -moz-linear-gradient(left, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 5%, rgba(0,0,0,0.19) 57%, rgba(0,0,0,0) 78%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 5%,rgba(0,0,0,0.19) 57%,rgba(0,0,0,0) 78%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 5%,rgba(0,0,0,0.19) 57%,rgba(0,0,0,0) 78%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
+    /* IE6-9 */
+}

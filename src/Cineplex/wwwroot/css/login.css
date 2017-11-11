@@ -1,0 +1,42 @@
+﻿/* 
+==========================================
+LOGIN AREA
+==========================================*/
+div#LoginArea {
+    max-width: 665px;
+    margin: 30px auto;
+    padding: 0 15px;
+    background: #2c3e50;
+    color: #fff;
+    border: 1px solid #2c3e50;
+}
+
+div#LoginArea input {
+    border-radius: 0;
+}
+
+#LoginArea_left {}
+
+#LoginArea_right {
+    background: #fff;
+    color: #000;
+    padding: 30px 40px 50px 40px;
+    min-height: 400px;
+}
+
+/* 
+==========================================
+ACCOUNT AREA
+==========================================*/
+#logoutForm {
+    font-size: 12px;
+}
+
+#logoutForm button.btn {
+    margin: 0;
+    padding: 0px 10px;
+    font-size: 12px;
+    color: #e6e6e6;
+    background-color: #651717;
+    border-color: #2b1818;
+}

@@ -1,0 +1,48 @@
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model Cineplex.Models.Show
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Show</h4>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CinemaId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CinemaId" class ="form-control" asp-items="ViewBag.CinemaId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MovieId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="MovieId" class ="form-control" asp-items="ViewBag.MovieId"></select>
+            </div>
+        </div>
+        <!-- start -->
+        <div class="form-group">
+            <label asp-for="SessionTime" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SessionTime" class="form-control datetime-picker" />
+                <span asp-validation-for="SessionTime" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

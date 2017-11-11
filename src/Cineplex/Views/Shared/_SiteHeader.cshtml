@@ -1,0 +1,54 @@
+﻿<div class="site-header">
+    <div class="site-header-inner">
+        <nav class="topnav">
+            <div class="container clearfix">
+                <ul class="topnav-left">
+                    <li><a asp-action="About" asp-controller="Home">About</a>
+                    <li><a asp-action="Contact" asp-controller="Home">Contact Us</a></li>
+                    </ul>
+                <ul class="topnav-right pull-right clearfix">
+                    <li class="cart-area">
+                        @await (Component.InvokeAsync<Cineplex.ViewComponents.CartNumItemsViewComponent>())
+                    </li>
+                    <li class="account-area pull-right">
+                        @{ Html.RenderPartial("_LoginPartial"); }
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">ABC Cineplex Corp.</a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-area="" asp-controller="Movies" asp-action="Index">Movies</a></li>
+                        <li><a asp-area="" asp-controller="Cinemas" asp-action="Index">Cinemas</a></li>
+                        <li><a asp-area="" asp-controller="Events" asp-action="Index">Events</a></li>
+                    </ul>
+                    @await (Component.InvokeAsync<Cineplex.ViewComponents.HeaderSearchViewComponent>())
+                    @{
+                        await Html.PartialAsync("_LoginPartial");
+                    }
+                </div><!-- end .navbar-collapse.collapse-->
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div><!-- end .site-header -->

@@ -1,0 +1,31 @@
+@model Cineplex.Models.CinemaViewModels.CinemaMoviesViewModel
+
+@{ 
+    ViewData["Title"] = $"Movies at {Model.Cinema.Location}";
+}
+
+
+@section entryHeader {
+    <div class="entry-header">
+        <div class="container">
+            <h3>Movies at @Model.Cinema.Location</h3>
+        </div>
+    </div>
+}
+
+@{ 
+    var movies = Model.Movies;
+    var cinema = Model.Cinema;
+}
+
+<div class="CinemaMoviesArea">
+@if(movies != null && movies.Any()){
+
+    <div class="movies row">
+        @foreach (var item in movies)
+        {
+            Html.RenderPartial("~/Views/Movies/_MovieItem.cshtml", item);
+        }
+    </div>
+}
+</div>

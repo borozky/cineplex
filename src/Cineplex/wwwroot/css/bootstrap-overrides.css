@@ -1,0 +1,42 @@
+﻿/* 
+==========================================
+OVERRIDE BOOTSTRAP COLORS
+==========================================*/
+.navbar-inverse {
+	background-color: #2c3e50;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #e4e4e4;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #e0f0ff;
+}
+.btn-success {
+    background-color: #2d4a2d;
+    border-color: #234223;
+}
+
+.btn.btn-lg {
+    padding: 7px 38px;
+}
+
+/* 
+==========================================
+OVERRIDE SOME BOOTSTRAP STYLING
+==========================================*/
+.navbar {
+	margin-bottom: 0;
+}
+.btn, .form-control {
+	border-radius: 0;
+}
+
+/* 
+==========================================
+OVERRIDE ALERTS
+==========================================*/
+.alert {
+    margin-bottom: 0;
+}

@@ -1,0 +1,50 @@
+﻿@model Cineplex.Models.Event
+
+<div id="EditEvent" style="display:inline-block">
+    <div class="dropdown">
+        <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Edit Event
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" style="margin-top:0">
+            <li>
+                <form asp-action="Edit" method="post" asp-route-id="@Model.Id" enctype="multipart/form-data" class="clearfix">
+                    <div class="col-xs-12">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <table>
+                            <tr>
+                                <td class="text-right">Title</td>
+                                <td><input type="text" asp-for="Title" required/><br />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Description</td>
+                                <td><textarea asp-for="Details" required></textarea><br />
+                                <span asp-validation-for="Details" class="text-danger"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Event Start</td>
+                                <td><input type="text" asp-for="StartDate" value="@Model.StartDate.ToString()" class="datetime-picker"/><br />
+                                <span asp-validation-for="StartDate"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Images</td>
+                                <td><input type="file" name="files" accept="image/*"/><br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-left">
+                                    <input type="submit" value="Update"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model Cineplex.Models.Movie
+
+@{
+    var ratingItems = new List<Rating> { new Rating { Id = 0, Abbreviation = "", Description = "" } }.Union((List<Rating>)ViewBag.Ratings);
+
+    var ratings = new SelectList(ratingItems, "Id", "Abbreviation", Model.RatingId);
+}
+
+<div id="AddMovie">
+    <div class="dropdown">
+        <button class="btn btn-xs btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Add Movie
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" style="margin-top:0">
+            <li>
+                <form asp-action="Create" method="post" class="clearfix"  enctype="multipart/form-data">
+                    <div class="col-xs-12">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <table>
+                            <tr>
+                                <td>Title</td>
+                                <td><input type="text" asp-for="Title" placeholder="Title" required/></td>
+                            </tr>
+                            <tr>
+                                <td>Description</td>
+                                <td>
+                                    <textarea asp-for="Description" rows="6" cols="30" placeholder="description" required></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Duration: </td>
+                                <td><input type="number" asp-for="Duration" min="0"/></td>
+                            </tr>
+                            <tr>
+                                <td>Rating: </td>
+                                <td><select asp-for="RatingId" asp-items="ratings"></select></td>
+                            </tr>
+                            <tr>
+                                <td>Image:</td>
+                                <td><input type="file" name="files" accept="image/*" multiple /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-left"><input type="submit" value="Create" /></td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
