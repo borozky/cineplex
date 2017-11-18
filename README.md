@@ -1,7 +1,7 @@
 # Cineplex ASP.NET Core project
 RMIT Web Development Technologies WDT - Assignment 2. Cineplex Cinema Booking Website
 
-![Screenshot](cineplex.png)
+![Home](cineplex.png)
 
 #### Technical Requirements
 - Enterprise-level web application written in ASP.NET Core with SQL Server LocalDB database
@@ -30,6 +30,12 @@ RMIT Web Development Technologies WDT - Assignment 2. Cineplex Cinema Booking We
 - successful purchase presents an order summary page. Receipt saved in purchase history. 
 - Order summary has link to logout.
 
-### Additional features added (not part of requirements)
+#### Additional features added (not part of requirements)
 - Admin system to create, movies and cinema info
 
+#### Additional Images
+![Movies Page](MoviesPage.png)
+![Admin movies page](MoviesPage-admin.png)
+![cart page](CartPage.png)
+![checkout page](CheckoutPage.png)
+![order summary page](OrderSummary.png)
