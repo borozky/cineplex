@@ -70,7 +70,7 @@ namespace Cineplex.Controllers
                 return NotFound();
             }
 
-            var bookings = await _db.Bookings
+            IQueryable<Booking> bookings = _db.Bookings
                         .Include(b => b.Show)
                             .ThenInclude(s => s.Movie)
                         .Include(b => b.Show)
@@ -79,16 +79,15 @@ namespace Cineplex.Controllers
                             .ThenInclude(t => t.PricingType)
                         .Include(b => b.Seats)
                         .Where(b => b.OrderId == order.Id)
-                        .AsNoTracking()
-                        .ToListAsync();
-
-            order.Bookings = bookings;
+                        .AsNoTracking();
 
             OrderDetailsViewModel viewModel = new OrderDetailsViewModel
             {
                 Order = order,
                 DateCreated = (DateTime)_db.Entry(order).Property("CreatedAt").CurrentValue
             };
+
+            viewModel.Order.Bookings = await bookings.ToListAsync();
 
             return View(viewModel);
         }
