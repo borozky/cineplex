@@ -1,5 +1,6 @@
 # Cineplex ASP.NET Core project
-RMIT Web Development Technologies WDT - Assignment 2. Cineplex Cinema Booking Website
+RMIT Web Development Technologies WDT - Assignment 2. Cineplex Cinema Booking Website<br/>
+<i>Note: This project is very challenging!</i>
 
 ![Home](cineplex.png)
 
