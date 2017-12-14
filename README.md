@@ -32,7 +32,7 @@ RMIT Web Development Technologies WDT - Assignment 2. Cineplex Cinema Booking We
 - Order summary has link to logout.
 
 #### Additional features added (not part of requirements)
-- Admin system to create, movies and cinema info
+- Admin system to create movies, cinema info, and events
 
 #### Additional Images
 ![Movies Page](MoviesPage.png)
